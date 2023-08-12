@@ -21,6 +21,7 @@ internal class Program
         var helloTask = ReadFileAsync("Hello.txt");
         var worldTask = ReadFileAsync("World.txt");
 
-        return $"{await helloTask}{await worldTask}";
+       var res = Task.WhenAll(helloTask, worldTask);
+       return String.Join(" ", await res);
     }
 }
